@@ -28,7 +28,7 @@ pi@raspberrypi ~ $ sudo apt-get install python-serial
 ```
 Download and unpack the folder. The next step is to download the image of the updated NodeMCU, which can be found on [github](https://github.com/nodemcu/nodemcu-firmware/releases). The binary has to be in the esptool-master folder. Now the wiring between the ESP module and the Raspberry Pi.
 
-![alt text](https://github.com/SensorInput/TempSense/doc/esp-gpio0-gnd.png "Raspberry Pi and ESP")
+![alt text](https://raw.githubusercontent.com/SensorInput/TempSense/master/doc/esp-gpio0-gnd.png "Raspberry Pi and ESP")
 
 #### Wiring Pin assignment
 
@@ -126,7 +126,7 @@ After uploading both scripts to the ESP, the ESP can be unplugged from the Raspb
 
 ### Wiring and programming the Arduino
 
-![alt text](https://github.com/SensorInput/TempSense/doc/complete_wiring.png "Complete wiring")
+![alt text](https://raw.githubusercontent.com/SensorInput/TempSense/master/doc/complete_wiring.png "Complete wiring")
 
 This is the total wiring. Everything is connected with the arduino, except the fan and the battery. The DHT11 sensor sends its temperature data to the Arduino board. If the temperature is above 30°C, then the relay is switched and the 2nd circuit with the battery and the fan closes. When the temperature drops below 25°C again, the relay will switch back and the circuit is no longer closed. The DHT11 sensor and the ESP module require a 3.3V voltage while the relay needs a 5V voltage. 
 
