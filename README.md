@@ -7,7 +7,7 @@ Temperature dependent fan control with Web Interface.
 
 Task
 -----
-The aim of this project is to control a cooling system (in this case a fan) via a temperature sensor. In addition, the system can be switched on or off via a Web Interface. To realize this project, the following things are used in this system:
+The aim of this project is to control a cooling system (in this case a fan) by using a temperature sensor. In addition, the system can be switched on or off via a Web Interface. To realize this project, the following things are used in this system:
 + Arduino Mega 2560
 + ESP8266-ESP1
 + DHT11 Sensor
@@ -15,18 +15,18 @@ The aim of this project is to control a cooling system (in this case a fan) via 
 + V9 Batterie
 + Relay Module (here it's a HL-54S v1.0)
 
-The Arduino is the centerpiece, which provides most of the code and is wired to the rest of the parts. The ESP is a module that integrates a small microcontroller with a 802-11 Wifi Transmitter. This module contains the rest of the code and is the Web Interface for this system. The temperature is measured via the DHT11 sensor. If the temperature is too high, the relay is switched, which in turn closes the circuit between the battery ands the fan. The relay can also be connected to multiple circuits. In this project only one fan is used to keep it simple. The system can be scaled to any size.
+The Arduino is the centerpiece, which provides most of the code and is wired to the remaining parts. The ESP is a module that integrates a small microcontroller with a 802-11 Wifi Transmitter. This module contains the remaining code and is the Web Interface for this system. The temperature is measured via the DHT11 sensor. If the temperature is too high, the relay is switched, which in return closes the circuit between the battery and the fan. The relay can also be connected to multiple circuits. In this project only one fan is used to keep it simple. The system can be scaled to any size.
 
 Implementation
 -----
-The ESP is the only thing in the system that needs to be programmed but does not have a USB interface. To program on the ESP module you need an operating system. The NodeMCU is an open source platform and includes a firmware which runs on the ESP module. 
+The ESP is the only part of this system that needs to be programmed but does not have an USB interface. To program the ESP module one needs an operating system. The NodeMCU is an open source platform and includes a firmware which runs on the ESP module. 
 
 ### Flashing the ESP module
-One way to flash the NodeMCU firmware on the module is with a Raspberry Pi. To update the firmware, a tool called ESPTool is needed. The pyhton program makes the update based on a binary file. Before downloading the esptool, the Python serial library must be installed using the command:
+One way to flash the NodeMCU firmware on the module is by using a Raspberry Pi. To update the firmware, a tool called ESPTool is needed. The pyhton program does the update based on a binary file. Before downloading the ESPtool, the Python serial library must be installed using the command:
 ```
 pi@raspberrypi ~ $ sudo apt-get install python-serial
 ```
-Download and unpack the folder. The next step is to download the image of the updated NodeMCU, which can be found on [github](https://github.com/nodemcu/nodemcu-firmware/releases). The binary has to be in the esptool-master folder. Now the wiring between the ESP module and the Raspberry Pi.
+Download and unpack the folder. The next step is to download the image of the updated NodeMCU, which can be found on [github](https://github.com/nodemcu/nodemcu-firmware/releases). The binary has to be in the ESPtool-master folder. Now comes the wiring between the ESP module and the Raspberry Pi.
 
 ![alt text](https://raw.githubusercontent.com/SensorInput/TempSense/master/doc/esp-gpio0-gnd.png "Raspberry Pi and ESP")
 
@@ -41,12 +41,12 @@ Download and unpack the folder. The next step is to download the image of the up
 | 10; RX        | TX            | receiver to transmitter |
 | 20; ground    | gpio0         | has to be pulled low to get into flash mode |
 
-After the ESP is wired with the Raspberry Pi, everything is ready to flash the firmware. Now run in the terminal following command:
+After the ESP is wired with the Raspberry Pi, everything is ready to flash the firmware. Now run the terminal by using the following command:
 ```
 pi@raspberrypi ~ $ sudo python esptool.py --port /dev/ttyAMA0 write_flash 0x00000 nodemcu-master-7-modules-2018-03-27-13-49-36-float.bin
 ```
 
-If it has successfully passed, the result will be identical to the console above. The next step is to disconnect the cable VCC pin module and also disconnect the cable that connects the GPIO0 to GND, then reconnect the VCC cable to the module.
+If it has successfully passed, the result will be identical to the console above. The next step is to disconnect the cable VCC pin module and also disconnect the cable that connects the GPIO0 to the GND, then reconnect the VCC cable to the module.
 
 ### Programming on the ESP via NodeMCU
 
@@ -75,7 +75,7 @@ wifi.sta.connect()
 tmr.alarm(0, 1000, 1, checkWiFiStatus)
 ```
 
-This script tries to connect to a WiFi with the speciefied SSID and password. If the connection was successful, the next file (runWebServer.lua) will be executed.
+This script tries to connect to a WiFi with the specified SSID and password. If the connection was successful, the next file (runWebServer.lua) will be executed.
 
 #### runWebServer.lua
 
